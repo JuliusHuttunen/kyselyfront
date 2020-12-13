@@ -10,12 +10,14 @@ export default function Answer(props) {
   const [question, setQuestion] = useState({qst: props.question.qst, qsttype: props.question.qsttype, answer: props.question.answer});
 
   const refreshPage = () => {
+    setTimeout(() => {
     window.location.reload();
+  }, 1200);
   }
 
   const handleClose = () => {
-    refreshPage()
     props.updateQuestion(props.question._links.self.href, question);
+    refreshPage();
   }
 
   const inputChanged = (event) => {
@@ -29,7 +31,8 @@ export default function Answer(props) {
       <div>
        <FormControl component="fieldset" >
        <FormLabel component="legend">Anna arvo välillä 1-5:</FormLabel>
-            <RadioGroup row aria-label="answer" name="answer"  value={question.answer} onChange={inputChanged} onBlur={handleClose}>
+            <RadioGroup row aria-label="answer" name="answer"  value={question.answer}
+             onChange={inputChanged} onBlur={handleClose}>
               <FormControlLabel value="1" control={<Radio />} label="1" />
               <FormControlLabel value="2" control={<Radio />} label="2" />
               <FormControlLabel value="3" control={<Radio />} label="3" />

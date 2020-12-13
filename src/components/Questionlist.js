@@ -3,6 +3,7 @@ import ReactTable from 'react-table-v6';
 import 'react-table-v6/react-table.css';
 import Snackbar from '@material-ui/core/Snackbar';
 import Answer from './Answer';
+import { red } from '@material-ui/core/colors';
 
 export default function Questionlist() {
   const [questions, setQuestions] = useState([]);
@@ -43,11 +44,15 @@ export default function Questionlist() {
   }
 
   const columns = [
+        
     {
       Header: 'Kysymys',
       accessor: 'qst',
       sortable:false,
-      filterable:false
+      filterable:false,
+      style:{
+        background: red
+      }
     },
     {
       Cell: row => (<Answer question={row.original} updateQuestion={updateQuestion} />)
@@ -57,7 +62,7 @@ export default function Questionlist() {
   return(
     <div>
       <ReactTable 
-        data={questions} columns={columns} />
+        data={questions} columns={columns}/>
       <Snackbar open={open} autoHideDuration={1000} 
         onClose={handleClose} message={msg} />
     </div>
