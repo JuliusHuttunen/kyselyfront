@@ -74,7 +74,7 @@ export default function Questionlist() {
   return(
     <div>
       <ReactTable 
-        data={questions} columns={columns} defaultPageSize={10}/>
+        data={questions} columns={columns} defaultPageSize={20}/>
       <Snackbar open={open} autoHideDuration={1000} 
         onClose={handleClose} message={msg} />
     </div>

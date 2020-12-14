@@ -12,12 +12,13 @@ export default function Answer(props) {
   const refreshPage = () => {
     setTimeout(() => {
     window.location.reload();
-  }, 1200);
+  }, 1000);
   }
 
   const handleClose = () => {
     props.updateQuestion(props.question._links.self.href, question);
     props.saveQuestion(question);
+    refreshPage();
   }
 
   const inputChanged = (event) => {
