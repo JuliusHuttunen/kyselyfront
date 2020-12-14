@@ -23,6 +23,18 @@ export default function Questionlist() {
     .catch(err => console.error(err))
   }
 
+  const saveQuestion = (question) => {
+    fetch(url + 'https://questionnaire-rest.herokuapp.com/api/answers', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(question)
+    })
+    .then(res => getQuestions())
+    .catch(err => console.error(err))
+}
+
   const updateQuestion = (link, question) => {
     fetch(url + link, {
       method: 'PUT',
@@ -55,14 +67,14 @@ export default function Questionlist() {
       }
     },
     {
-      Cell: row => (<Answer question={row.original} updateQuestion={updateQuestion} />)
+      Cell: row => (<Answer question={row.original} saveQuestion={saveQuestion} updateQuestion={updateQuestion} />)
     }
   ]
 
   return(
     <div>
       <ReactTable 
-        data={questions} columns={columns}/>
+        data={questions} columns={columns} defaultPageSize={10}/>
       <Snackbar open={open} autoHideDuration={1000} 
         onClose={handleClose} message={msg} />
     </div>

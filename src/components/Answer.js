@@ -17,7 +17,7 @@ export default function Answer(props) {
 
   const handleClose = () => {
     props.updateQuestion(props.question._links.self.href, question);
-    refreshPage();
+    props.saveQuestion(question);
   }
 
   const inputChanged = (event) => {
