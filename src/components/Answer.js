@@ -12,7 +12,7 @@ export default function Answer(props) {
   const refreshPage = () => {
     setTimeout(() => {
     window.location.reload();
-  }, 1000);
+  }, 1300);
   }
 
   const handleClose = () => {
